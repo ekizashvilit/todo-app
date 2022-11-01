@@ -6,31 +6,46 @@
     padding: 0;
 }
 
-/* img {
-    max-width: 100%;
-} */
+.theme-dark {
+    --bg-color-body: #171823;
+    --bg-image-body: url(images/bg-mobile-dark.jpg);
+    --bg-list: #25273D;
+    --box-shadow: black;
+    --grey-text: #767992;
+    --circle-border: #393A4B;
+    --white-text: #C8CBE7;
+    --crossed-text: #4D5067;
+    --bottom-items-color: #5B5E7E;
+    --filter-hover: #E3E4F1;
+}
 
-/* .flex-row {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-} */
+.theme-light {
+    --bg-color-body: #FAFAFA;
+    --bg-image-body: url(images/bg-mobile-light.jpg);
+    --bg-list: #FAFAFA;
+    --box-shadow: grey;
+    --grey-text: #9495A5;
+    --circle-border: #E3E4F1;
+    --white-text: #494C6B;
+    --crossed-text: #D1D2DA;
+    --bottom-items-color: #9495A5;
+    --filter-hover: #494C6B;
+}
 
 body {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-size: 18px;
-    background-image: url(images/bg-mobile-dark.jpg);
+    background-image: var(--bg-image-body);
     background-repeat: no-repeat;
-    background-color: #171823;
+    background-color: var(--bg-color-body);
     margin: 0 auto;
-    background-size: 100vw 32vh;
+    background-size: 100vw 25vh;
     display: flex;
     justify-content: center;
 }
 
 .container {
-    /* margin: 2.5rem 1.5rem 7.875rem; */
     width: 100%;
     max-width: 540px;
     margin: 0 1.5rem;
@@ -64,7 +79,6 @@ h1 {
 
 main {
     display: flex;
-    gap: 1rem;
     flex-direction: column;
 }
 
@@ -75,39 +89,42 @@ header {
 }
 
 .add-new-item {
-    background: #25273D;
+    background: var(--bg-list);
     height: 3rem;
     border-radius: 5px;
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 14px 24px;
-    box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 35px 50px -15px var(--box-shadow);
+    margin-bottom: 1rem;
 }
 
 .add-new-item #addItem {
     background: transparent;
-    color: #767992;
+    color: var(--grey-text);
     border: 0;
     outline: 0;
     font-family: inherit;
     top: 1px;
     position: relative;
-    font-size: 15px;
+    font-size: 14px;
+    width: 100%;
 }
 
 .add-new-item span {
-    width: 20px;
+    width: 22px;
     height: 20px;
-    border: 1px solid #393A4B;
+    border: 1px solid var(--circle-border);
     display: block;
     border-radius: 50px;
 }
 
 .content {
-    background: #25273D;
+    background: var(--bg-list);
     border-radius: 5px 5px 0 0;
-    box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 35px 50px -15px var(--box-shadow);
+    font-size: 14px;
 }
 
 ul {
@@ -117,13 +134,12 @@ ul {
 }
 
 ul li {
-    color: #C8CBE7;
+    color: var(--white-text);
     height: 52px;
-    border-bottom: 1px solid #393A4B;
+    border-bottom: 1px solid var(--circle-border);
     display: flex;
     align-items: center;
-    /* padding-left: 24px; */
-    /* padding-right: 24px; */
+    position: relative;
 }
 
 ul li input[type="checkbox"] {
@@ -144,17 +160,16 @@ ul li label {
 
 .checkmark {
     position: absolute;
-    top: -5px;
+    top: 0px;
     height: 20px;
     width: 20px;
     left: 0;
 }
 
 ul li input[type="checkbox"] ~ .checkmark {
-    border: 1px solid #393A4B;
+    border: 1px solid var(--circle-border);
     border-radius: 50px;
     position: absolute;
-    top: 5px;
 }
 
 ul li input[type="checkbox"] ~ .checkmark:hover {
@@ -173,19 +188,19 @@ ul li input[type="checkbox"]:checked ~ .checkmark {
 
 ul li input[type="checkbox"]:checked ~ .text {
     text-decoration: line-through;
+    color: var(--crossed-text);
 }
 
 .bottom-items {
-    justify-content: space-between;
-    display: flex;
-    color: #5B5E7E;
+    color: var(--bottom-items-color);
     font-size: 14px;
-    background: #25273D;
-    height: 50px;
-    align-items: center;
-    padding: 0 24px;
     border-radius: 0 0 5px 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 1rem;
+    text-align: center;
 }
+
 
 .filter input[type="radio"] {
     position: absolute;
@@ -197,6 +212,7 @@ ul li input[type="checkbox"]:checked ~ .text {
 
 .filter label {
     cursor: pointer;
+    padding: 0 10px;
 }
 
 .items-left {
@@ -208,18 +224,72 @@ ul li input[type="checkbox"]:checked ~ .text {
 }
 
 .filter label:hover {
-    color: #E3E4F1;
+    color: var(--filter-hover);
 }
 
 .items-left:hover {
-    color: #E3E4F1;
+    color: var(--filter-hover);
 }
 
 .clear:hover {
-    color: #E3E4F1;
+    color: var(--filter-hover);
 }
 
 .filter {
     display: flex;
     gap: 18px;
+}
+
+.grid-1 {
+    grid-column: 1 / 2;
+    background: var(--bg-list);
+    height: 50px;
+    border-radius: 0 0 0 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    gap: 5px;
+    font-size: 12px;
+}
+
+.grid-2 {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 48px;
+    align-items: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.grid-3 {
+    grid-column: 2 / 3;
+    background: var(--bg-list);
+    height: 50px;
+    border-radius: 0 0 5px 0;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    justify-content: end;
+    font-size: 12px;
+}
+
+.filter input[type="radio"]:checked ~ span {
+    color: #3A7CFD;
+}
+
+.remove {
+    background: url(images/icon-cross.svg) no-repeat;
+    width: 17px;
+    height: 17px;
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 18;
+}
+
+ul li:hover .remove {
+    display: block;
 }
