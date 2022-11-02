@@ -164,7 +164,7 @@ ul li input[type="checkbox"] {
 ul li label {
     position: relative;
     padding-left: 35px;
-    padding-top: 4px;
+    padding-top: 5px;
     padding-left: 38px;
     cursor: pointer;
 }
