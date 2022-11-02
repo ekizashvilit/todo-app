@@ -17,6 +17,8 @@
     --crossed-text: #4D5067;
     --bottom-items-color: #5B5E7E;
     --filter-hover: #E3E4F1;
+    --bg-image-desktop: url(images/bg-desktop-dark.jpg);
+    --add-item-text: #C8CBE7;
 }
 
 .theme-light {
@@ -30,6 +32,8 @@
     --crossed-text: #D1D2DA;
     --bottom-items-color: #9495A5;
     --filter-hover: #494C6B;
+    --bg-image-desktop: url(images/bg-desktop-light.jpg);
+    --add-item-text: #393A4B;
 }
 
 body {
@@ -102,7 +106,7 @@ header {
 
 .add-new-item #addItem {
     background: transparent;
-    color: var(--grey-text);
+    color: var(--add-item-text);
     border: 0;
     outline: 0;
     font-family: inherit;
@@ -118,7 +122,14 @@ header {
     border: 1px solid var(--circle-border);
     display: block;
     border-radius: 50px;
+    cursor: pointer;
 }
+
+.add-new-item span:hover {
+    border: none;
+    background: center url(./images/icon-check.svg) no-repeat, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
 
 .content {
     background: var(--bg-list);
@@ -178,7 +189,7 @@ ul li input[type="checkbox"] ~ .checkmark:hover {
 
 ul li input[type="checkbox"]:checked ~ .checkmark {
     border: none;
-    background: center url(./images/icon-check.svg) no-repeat, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));;
+    background: center url(./images/icon-check.svg) no-repeat, linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
 .flex-row {
@@ -292,4 +303,52 @@ ul li input[type="checkbox"]:checked ~ .text {
 
 ul li:hover .remove {
     display: block;
+}
+
+ul li.hidden {
+    display: none;
+}
+
+.list-item {
+    max-width: 94%;
+}
+
+/* DESKTOP */
+@media (min-width: 750px) {
+    h1 {
+        font-size: 43px;
+        padding-top: 14px;
+    }
+
+    header {
+        align-items: center;
+    }
+
+    .add-new-item {
+        height: 64px;
+    }
+
+    ul li {
+        height: 64px;
+    }
+
+    .content {
+        font-size: 16px;
+    }
+    
+    .grid-1 {
+        font-size: 13px;
+    }
+
+    .grid-3 {
+        font-size: 13px;
+    }
+
+    .add-new-item #addItem {
+        font-size: 16px;
+    }
+
+    body {
+        background-image: var(--bg-image-desktop);
+    }
 }
